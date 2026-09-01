@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Д-р Сулейманова Мадина Саидовна | Пластический хирург</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
+            sans: ['"Montserrat"', 'sans-serif'],
+          },
+          colors: {
+            nude: {
+              50: '#FAF8F5',
+              100: '#F3EFEA',
+              200: '#E6DDD4',
+              300: '#D2C3B4',
+              800: '#322B25',
+              900: '#1A1613'
+            },
+            accent: {
+              DEFAULT: '#B8926A',
+              hover: '#9E7852',
+              light: '#DFCCA9'
+            },
+            clinical: {
+              dark: '#0C131F',
+              slate: '#1E293B',
+              blue: '#0284C7'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .slider-container { position: relative; overflow: hidden; user-select: none; }
+    .slider-img-top { position: absolute; top: 0; left: 0; height: 100%; width: 50%; overflow: hidden; }
+    .slider-handle { position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: #C5A880; cursor: ew-resize; z-index: 20; }
+    .slider-button { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 36px; height: 36px; border-radius: 50%; background: #ffffff; border: 2px solid #C5A880; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.35); }
+  </style>
+</head>
+<body class="font-sans bg-nude-50 text-nude-900 selection:bg-accent/20 antialiased overflow-x-hidden">
+
+  <nav class="fixed top-0 left-0 w-full bg-nude-50/95 backdrop-blur-md z-50 border-b border-nude-200">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+      <a href="#" class="flex flex-col">
+        <span class="font-serif text-2xl font-bold tracking-tight text-nude-900">
+          Dr. Suleymanova
+        </span>
+        <span class="text-[10px] tracking-widest uppercase text-accent font-semibold -mt-1" data-i18n="nav.badge">
+          Пластический хирург
+        </span>
+      </a>
+      
+      <div class="hidden lg:flex items-center gap-7 text-xs uppercase tracking-widest font-medium text-nude-800">
+        <a href="#about" class="hover:text-accent transition" data-i18n="nav.about">О хирурге</a>
+        <a href="#theory" class="hover:text-accent transition" data-i18n="nav.theory">Анатомия &amp; Теория</a>
+        <a href="#blepharo" class="hover:text-accent transition" data-i18n="nav.blepharo">Блефаропластика</a>
+        <a href="#lipo" class="hover:text-accent transition" data-i18n="nav.lipo">Липосакция</a>
+        <a href="#cases" class="hover:text-accent transition" data-i18n="nav.cases">Клинические примеры</a>
+        <a href="#contact" class="hover:text-accent transition" data-i18n="nav.contact">Контакты</a>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <div class="flex items-center bg-nude-100 border border-nude-200 rounded-full p-1 text-xs">
+          <button onclick="changeLang('ru')" id="btn-ru" class="px-2.5 py-1 rounded-full font-semibold bg-accent text-white transition">RU</button>
+          <button onclick="changeLang('en')" id="btn-en" class="px-2.5 py-1 rounded-full text-nude-800 transition">EN</button>
+        </div>
+
+        <a href="#contact" class="hidden sm:inline-flex px-5 py-2.5 bg-nude-900 hover:bg-accent text-white text-xs uppercase tracking-wider font-semibold rounded-full transition" data-i18n="nav.consult">
+          Консультация
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="relative min-h-[92vh] flex items-center justify-center pt-20 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=2400&q=85" 
+        alt="Современная операционная палата с хирургическим оборудованием" 
+        class="w-full h-full object-cover object-center filter brightness-[0.38] contrast-110"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-nude-900/95 via-nude-900/75 to-clinical-dark/60"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-nude-900 via-transparent to-transparent opacity-80"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6 py-20 text-white w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="lg:col-span-8 space-y-6">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/10 backdrop-blur-md rounded-full text-xs tracking-widest uppercase text-accent-light border border-white/20">
+          <i data-lucide="shield-check" class="w-4 h-4 text-accent"></i>
+          <span data-i18n="hero.badge">Высокоточная хирургия лица и тела</span>
+        </div>
+        
+        <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-light leading-tight">
+          <span data-i18n="hero.title_surname">Сулейманова</span> <br/>
+          <span class="italic font-normal text-accent-light" data-i18n="hero.title_name">Мадина Саидовна</span>
+        </h1>
+        
+        <p class="text-base sm:text-lg text-nude-100 font-light leading-relaxed max-w-2xl" data-i18n="hero.desc">
+          Пластический хирург. Сочетание передового операционного оснащения, малотравматичных методик и анатомической прецизионности для предсказуемого и естественного результата.
+        </p>
+
+        <div class="grid grid-cols-3 gap-4 pt-4 max-w-lg border-t border-white/15">
+          <div>
+            <div class="font-serif text-2xl sm:text-3xl text-accent font-bold">10+</div>
+            <div class="text-[11px] text-nude-200 uppercase tracking-wider mt-1" data-i18n="hero.stat1">Лет практики</div>
+          </div>
+          <div>
+            <div class="font-serif text-2xl sm:text-3xl text-accent font-bold">1000+</div>
+            <div class="text-[11px] text-nude-200 uppercase tracking-wider mt-1" data-i18n="hero.stat2">Операций</div>
+          </div>
+          <div>
+            <div class="font-serif text-2xl sm:text-3xl text-accent font-bold">Fast-Track</div>
+            <div class="text-[11px] text-nude-200 uppercase tracking-wider mt-1" data-i18n="hero.stat3">Легкое восстановление</div>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4 pt-2">
+          <a href="#contact" class="px-8 py-4 bg-accent hover:bg-accent-hover text-white rounded-full font-medium text-center text-xs uppercase tracking-widest transition shadow-lg flex items-center justify-center gap-2">
+            <span data-i18n="hero.cta">Записаться на прием</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+          <a href="#theory" class="px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white rounded-full font-medium text-center text-xs uppercase tracking-widest transition flex items-center justify-center gap-2">
+            <span data-i18n="hero.more">Схемы и методология</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="lg:col-span-4 hidden lg:block">
+        <div class="bg-nude-900/85 backdrop-blur-xl border border-white/15 p-7 rounded-3xl text-nude-100 space-y-4 shadow-2xl">
+          <div class="flex items-center gap-3 border-b border-white/10 pb-4">
+            <div class="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent">
+              <i data-lucide="activity" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <h4 class="font-serif text-lg font-semibold text-white" data-i18n="hero.box_t">Хирургический блок</h4>
+              <p class="text-[11px] text-nude-300" data-i18n="hero.box_sub">Европейские стандарты стерильности</p>
+            </div>
+          </div>
+          <ul class="space-y-3 text-xs text-nude-200/90 leading-relaxed">
+            <li class="flex items-start gap-2.5">
+              <i data-lucide="check" class="w-4 h-4 text-accent shrink-0 mt-0.5"></i>
+              <span data-i18n="hero.box_i1">Бестеневые светодиодные хирургические светильники с регулировкой цветовой температуры.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <i data-lucide="check" class="w-4 h-4 text-accent shrink-0 mt-0.5"></i>
+              <span data-i18n="hero.box_i2">Ультразвуковые и радиоволновые коагуляторы для бескровного рассечения тканей.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <i data-lucide="check" class="w-4 h-4 text-accent shrink-0 mt-0.5"></i>
+              <span data-i18n="hero.box_i3">Высокоточные тонкие канюли и микрохирургический шовный материал 6-0 / 7-0.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="about" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-5 relative">
+          <div class="rounded-3xl overflow-hidden shadow-2xl aspect-[4/5] relative z-10 border-4 border-nude-100 bg-nude-100">
+            <img 
+              src="https://github.com/po19s121/Madina/blob/main/m2.jpg?raw=true" 
+              alt="Сулейманова Мадина Саидовна" 
+              class="w-full h-full object-cover object-center"
+            />
+          </div>
+          <div class="absolute -bottom-4 -right-4 w-full h-full border-2 border-accent rounded-3xl -z-0"></div>
+        </div>
+
+        <div class="lg:col-span-7 space-y-6">
+          <span class="text-xs uppercase font-semibold text-accent tracking-widest" data-i18n="about.pre">О хирурге</span>
+          <h2 class="font-serif text-3xl sm:text-4xl text-nude-900" data-i18n="about.heading">
+            Индивидуальная анатомическая гармония и бережная хирургия
+          </h2>
+          <p class="text-nude-800 leading-relaxed text-sm sm:text-base" data-i18n="about.p1">
+            Мадина Саидовна специализируется на эстетической и реконструктивной хирургии с фокусом на омоложение взгляда (блефаропластика всех уровней сложности) и скульптурирование контуров тела (высокоточная липосакция).
+          </p>
+          <p class="text-nude-800 leading-relaxed text-sm sm:text-base" data-i18n="about.p2">
+            В основе каждой операции — философия «невидимых рубцов» и быстрого восстановления благодаря работе в микрохирургической технике и использованию передового операционного оборудования.
+          </p>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 pt-4 border-t border-nude-200">
+            <div class="p-4 bg-nude-50 rounded-2xl border border-nude-100">
+              <div class="font-serif text-2xl font-bold text-accent">10+</div>
+              <p class="text-[11px] text-nude-800 uppercase tracking-wider mt-1" data-i18n="about.stat1">Лет практики</p>
+            </div>
+            <div class="p-4 bg-nude-50 rounded-2xl border border-nude-100">
+              <div class="font-serif text-2xl font-bold text-accent">1000+</div>
+              <p class="text-[11px] text-nude-800 uppercase tracking-wider mt-1" data-i18n="about.stat2">Успешных операций</p>
+            </div>
+            <div class="p-4 bg-nude-50 rounded-2xl border border-nude-100">
+              <div class="font-serif text-2xl font-bold text-accent">Fast-Track</div>
+              <p class="text-[11px] text-nude-800 uppercase tracking-wider mt-1" data-i18n="about.stat3">Быстрая реабилитация</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="theory" class="py-24 bg-nude-100 border-t border-nude-200">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-2xl mx-auto text-center mb-16">
+        <span class="text-xs uppercase font-semibold text-accent tracking-widest" data-i18n="theory.pre">Теория &amp; Методология</span>
+        <h2 class="font-serif text-3xl sm:text-4xl text-nude-900 mt-2" data-i18n="theory.heading">Анатомические принципы вмешательства</h2>
+        <p class="text-nude-800/80 text-sm sm:text-base mt-4" data-i18n="theory.desc">
+          Прозрачность и понимание этапов операции — залог спокойствия пациента. Ниже представлены схемы разрезов, доступов и перераспределения тканей.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+        
+        <div class="bg-white p-8 rounded-3xl border border-nude-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between border-b border-nude-100 pb-4 mb-6">
+              <h3 class="font-serif text-2xl text-nude-900 font-semibold" data-i18n="theory.b_title">Анатомия периорбитальной зоны</h3>
+              <span class="px-3 py-1 bg-nude-50 border border-nude-200 rounded-full text-xs text-accent font-medium" data-i18n="theory.b_tag">Микрохирургия</span>
+            </div>
+            
+            <div class="bg-nude-50 rounded-2xl p-6 mb-6 flex items-center justify-center border border-nude-200/60">
+              <svg viewBox="0 0 520 250" class="w-full h-auto max-w-md" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 120 45 C 190 25, 310 25, 380 50" stroke="#7A6858" stroke-width="6" stroke-linecap="round" stroke-dasharray="1 1"/>
+                <text id="svg-brow" x="390" y="52" fill="#7A6858" font-size="11" font-family="Montserrat">Бровная дуга</text>
+
+                <path d="M 140 120 C 190 70, 310 70, 360 120 C 310 160, 190 160, 140 120 Z" fill="#FFFFFF" stroke="#3D342D" stroke-width="2"/>
+                <circle cx="250" cy="118" r="28" fill="#B8926A" opacity="0.8"/>
+                <circle cx="250" cy="118" r="12" fill="#1E1915"/>
+                <circle cx="245" cy="114" r="4" fill="#FFFFFF"/>
+
+                <path d="M 155 92 C 200 78, 300 78, 355 94" stroke="#D9534F" stroke-width="2.5" stroke-dasharray="4 3"/>
+                <circle cx="355" cy="94" r="3" fill="#D9534F"/>
+                <line x1="355" y1="94" x2="395" y2="85" stroke="#D9534F" stroke-width="1"/>
+                <text id="svg-upper-cut" x="400" y="88" fill="#D9534F" font-size="11" font-family="Montserrat" font-weight="600">Шов в складке века</text>
+
+                <ellipse cx="210" cy="148" rx="18" ry="10" fill="#E6C875" opacity="0.6" stroke="#C5A880" stroke-width="1.5"/>
+                <ellipse cx="250" cy="152" rx="16" ry="10" fill="#E6C875" opacity="0.6" stroke="#C5A880" stroke-width="1.5"/>
+                <ellipse cx="288" cy="148" rx="16" ry="9" fill="#E6C875" opacity="0.6" stroke="#C5A880" stroke-width="1.5"/>
+                <line x1="288" y1="155" x2="350" y2="195" stroke="#7A6858" stroke-width="1"/>
+                <text id="svg-fat-pads" x="355" y="198" fill="#7A6858" font-size="11" font-family="Montserrat">Жировые пакеты (грыжи)</text>
+
+                <path d="M 180 132 C 220 142, 280 142, 320 132" stroke="#2563EB" stroke-width="2" stroke-dasharray="2 2"/>
+                <line x1="180" y1="132" x2="110" y2="175" stroke="#2563EB" stroke-width="1"/>
+                <text id="svg-trans-cut" x="15" y="180" fill="#2563EB" font-size="11" font-family="Montserrat" font-weight="600">Внутренний доступ (без рубца)</text>
+              </svg>
+            </div>
+
+            <ul class="space-y-3 text-xs sm:text-sm text-nude-800">
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check" class="w-4 h-4 text-accent shrink-0 mt-0.5"></i>
+                <span data-i18n="theory.b_p1"><strong>Верхнее веко:</strong> иссечение строго рассчитанного избытка кожи до 0.5 мм с прецизионной фиксацией края.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check" class="w-4 h-4 text-accent shrink-0 mt-0.5"></i>
+                <span data-i18n="theory.b_p2"><strong>Нижнее веко:</strong> трансконъюнктивальный доступ без рассечения кожи и круговой мышцы глаза.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="bg-white p-8 rounded-3xl border border-nude-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between border-b border-nude-100 pb-4 mb-6">
+              <h3 class="font-serif text-2xl text-nude-900 font-semibold" data-i18n="theory.l_title">HD-моделирование контуров тела</h3>
+              <span class="px-3 py-1 bg-nude-50 border border-nude-200 rounded-full text-xs text-accent font-medium" data-i18n="theory.l_tag">Векторная аспирация</span>
+            </div>
+
+            <div class="bg-nude-50 rounded-2xl p-6 mb-6 flex items-center justify-center border border-nude-200/60">
+              <svg viewBox="0 0 520 250" class="w-full h-auto max-w-md" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="40" y="30" width="440" height="24" rx="4" fill="#E8D5C4" stroke="#B8926A" stroke-width="1"/>
+                <text id="svg-skin" x="50" y="46" fill="#3D342D" font-size="10" font-family="Montserrat" font-weight="600">Кожный покров (эпидермис и дерма)</text>
+
+                <rect x="40" y="60" width="440" height="90" fill="#FCEECB" stroke="#E2CD92" stroke-width="1"/>
+                <circle cx="80" cy="85" r="10" fill="#F4D984" opacity="0.6"/>
+                <circle cx="110" cy="105" r="14" fill="#F4D984" opacity="0.6"/>
+                <circle cx="150" cy="85" r="12" fill="#F4D984" opacity="0.6"/>
+                <circle cx="360" cy="90" r="12" fill="#F4D984" opacity="0.6"/>
+                <circle cx="400" cy="105" r="15" fill="#F4D984" opacity="0.6"/>
+
+                <rect x="40" y="156" width="440" height="42" rx="4" fill="#C97A7E" stroke="#A8585C" stroke-width="1"/>
+                <text id="svg-muscle" x="50" y="181" fill="#FFFFFF" font-size="11" font-family="Montserrat" font-weight="600">Мышечный каркас (сохраняемый рельеф)</text>
+
+                <path d="M 470 105 L 200 105" stroke="#334155" stroke-width="6" stroke-linecap="round"/>
+                <path d="M 200 105 L 185 105" stroke="#64748B" stroke-width="4" stroke-linecap="round"/>
+                <circle cx="205" cy="105" r="2" fill="#FFFFFF"/>
+                <circle cx="220" cy="105" r="2" fill="#FFFFFF"/>
+
+                <path d="M 180 95 L 160 85 M 180 115 L 160 125" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/>
+                <text id="svg-cannula" x="180" y="138" fill="#2563EB" font-size="10" font-family="Montserrat" font-weight="600">Атравматичная канюля (микропрокол 2 мм)</text>
+              </svg>
+            </div>
+
+            <ul class="space-y-3 text-xs sm:text-sm text-nude-800">
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check" class="w-4 h-4 text-accent shrink-0 mt-0.5"></i>
+                <span data-i18n="theory.l_p1"><strong>Селективность:</strong> равномерное удаление глубоких жировых отложений с сохранением поверхностного каркаса.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check" class="w-4 h-4 text-accent shrink-0 mt-0.5"></i>
+                <span data-i18n="theory.l_p2"><strong>HD-акцент:</strong> прорисовка индивидуальных линий талии, прямых мышц пресса и четкого угла челюсти.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="blepharo" class="py-24 bg-white border-t border-nude-200">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-2xl mb-16">
+        <span class="text-xs uppercase font-semibold text-accent tracking-widest" data-i18n="bleph.pre">Направление 01</span>
+        <h2 class="font-serif text-3xl sm:text-4xl text-nude-900 mt-2" data-i18n="bleph.heading">Блефаропластика (Пластика век)</h2>
+        <p class="text-nude-800/80 text-sm sm:text-base mt-4" data-i18n="bleph.sub">
+          Операция по омоложению периорбитальной зоны: открытый, свежий взгляд без изменения природного разреза глаз.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-nude-50 p-8 rounded-2xl border border-nude-200 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center text-accent mb-6">
+              <i data-lucide="eye" class="w-6 h-6"></i>
+            </div>
+            <h3 class="font-serif text-xl font-semibold mb-3" data-i18n="bleph.c1_t">Верхняя блефаропластика</h3>
+            <p class="text-sm text-nude-800/80 leading-relaxed mb-4" data-i18n="bleph.c1_d">
+              Удаление нависающей кожной складки и жировых пакетов. Тончайший шов прячется в естественную складку века и становится незаметен уже через 2–3 недели.
+            </p>
+          </div>
+          <div class="text-xs text-accent font-semibold border-t border-nude-200/60 pt-4" data-i18n="bleph.c1_time">Реабилитация: 7–10 дней</div>
+        </div>
+
+        <div class="bg-nude-50 p-8 rounded-2xl border border-nude-200 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center text-accent mb-6">
+              <i data-lucide="sparkles" class="w-6 h-6"></i>
+            </div>
+            <h3 class="font-serif text-xl font-semibold mb-3" data-i18n="bleph.c2_t">Трансконъюнктивальная</h3>
+            <p class="text-sm text-nude-800/80 leading-relaxed mb-4" data-i18n="bleph.c2_d">
+              Бесшовная методика для избавления от «мешков» под глазами. Разрез выполняется с внутренней стороны века, не оставляя внешних следов.
+            </p>
+          </div>
+          <div class="text-xs text-accent font-semibold border-t border-nude-200/60 pt-4" data-i18n="bleph.c2_time">Без внешних шрамов</div>
+        </div>
+
+        <div class="bg-nude-50 p-8 rounded-2xl border border-nude-200 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center text-accent mb-6">
+              <i data-lucide="maximize-2" class="w-6 h-6"></i>
+            </div>
+            <h3 class="font-serif text-xl font-semibold mb-3" data-i18n="bleph.c3_t">Круговая коррекция</h3>
+            <p class="text-sm text-nude-800/80 leading-relaxed mb-4" data-i18n="bleph.c3_d">
+              Комплексное устранение возрастных изменений верхних и нижних век, подтяжка круговой мышцы глаза и гармоничное перераспределение объемов.
+            </p>
+          </div>
+          <div class="text-xs text-accent font-semibold border-t border-nude-200/60 pt-4" data-i18n="bleph.c3_time">Комплексный результат</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="lipo" class="py-24 bg-nude-50 border-t border-nude-200">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-2xl mb-16">
+        <span class="text-xs uppercase font-semibold text-accent tracking-widest" data-i18n="lipo.pre">Направление 02</span>
+        <h2 class="font-serif text-3xl sm:text-4xl text-nude-900 mt-2" data-i18n="lipo.heading">Высокоточная липосакция и контурирование</h2>
+        <p class="text-nude-800/80 text-sm sm:text-base mt-4" data-i18n="lipo.sub">
+          Скульптурирование силуэта, избавление от локальных жировых ловушек и прорисовка четких анатомических линий тела.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="p-8 rounded-2xl bg-white border border-nude-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-nude-100 flex items-center justify-center text-accent mb-6">
+              <i data-lucide="smile" class="w-6 h-6"></i>
+            </div>
+            <h3 class="font-serif text-xl font-semibold mb-3" data-i18n="lipo.c1_t">Овал лица и подбородок</h3>
+            <p class="text-sm text-nude-800/80 leading-relaxed mb-4" data-i18n="lipo.c1_d">
+              Создание четкого шейно-подбородочного угла («профиль Нефертити») через микропроколы до 2 мм без видимых следов.
+            </p>
+          </div>
+          <div class="text-xs text-accent font-semibold border-t border-nude-100 pt-4" data-i18n="lipo.c1_tag">Операция одного дня</div>
+        </div>
+
+        <div class="p-8 rounded-2xl bg-white border border-nude-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-nude-100 flex items-center justify-center text-accent mb-6">
+              <i data-lucide="activity" class="w-6 h-6"></i>
+            </div>
+            <h3 class="font-serif text-xl font-semibold mb-3" data-i18n="lipo.c2_t">Живот, талия и бока</h3>
+            <p class="text-sm text-nude-800/80 leading-relaxed mb-4" data-i18n="lipo.c2_d">
+              HD-липоскульптурирование: деликатное удаление жировых отложений с акцентом на создание рельефного силуэта и плоского живота.
+            </p>
+          </div>
+          <div class="text-xs text-accent font-semibold border-t border-nude-100 pt-4" data-i18n="lipo.c2_tag">Атлетичный силуэт</div>
+        </div>
+
+        <div class="p-8 rounded-2xl bg-white border border-nude-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-nude-100 flex items-center justify-center text-accent mb-6">
+              <i data-lucide="compass" class="w-6 h-6"></i>
+            </div>
+            <h3 class="font-serif text-xl font-semibold mb-3" data-i18n="lipo.c3_t">Бедра и область колен</h3>
+            <p class="text-sm text-nude-800/80 leading-relaxed mb-4" data-i18n="lipo.c3_d">
+              Устранение зоны галифе и валиков над коленями, гармонизация пропорций ног с сохранением плавных линий.
+            </p>
+          </div>
+          <div class="text-xs text-accent font-semibold border-t border-nude-100 pt-4" data-i18n="lipo.c3_tag">Плавные пропорции</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cases" class="py-24 bg-white border-t border-nude-200">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-2xl mx-auto text-center mb-16">
+        <span class="text-xs uppercase font-semibold text-accent tracking-widest" data-i18n="cases.pre">Результаты операций</span>
+        <h2 class="font-serif text-3xl sm:text-4xl text-nude-900 mt-2" data-i18n="cases.heading">Клинические примеры</h2>
+        <p class="text-nude-800/80 text-sm sm:text-base mt-4" data-i18n="cases.desc">
+          Передвигайте ползунок для оценки изменений до и после хирургического вмешательства.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        
+        <div class="bg-nude-50 p-6 rounded-3xl border border-nude-200">
+          <div class="slider-container rounded-2xl aspect-[16/10] shadow-md mb-6" id="slider1">
+            <img 
+              src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1200&q=80" 
+              alt="После блефаропластики" 
+              class="w-full h-full object-cover object-center"
+            />
+            <span class="absolute bottom-4 right-4 bg-nude-900/80 text-white text-[11px] font-semibold tracking-wider uppercase px-3 py-1 rounded-full backdrop-blur-md" data-i18n="cases.after">После</span>
+            
+            <div class="slider-img-top" id="slider1-top">
+              <img 
+                src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1200&q=80" 
+                alt="До блефаропластики" 
+                class="absolute top-0 left-0 max-w-none h-full object-cover object-center filter grayscale contrast-125"
+                style="width: 100%;"
+              />
+              <span class="absolute bottom-4 left-4 bg-accent/90 text-white text-[11px] font-semibold tracking-wider uppercase px-3 py-1 rounded-full backdrop-blur-md" data-i18n="cases.before">До</span>
+            </div>
+
+            <div class="slider-handle" id="slider1-handle">
+              <div class="slider-button">
+                <i data-lucide="move-horizontal" class="w-4 h-4 text-accent"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <h4 class="font-serif text-xl font-bold text-nude-900" data-i18n="cases.c1_t">Круговая блефаропластика</h4>
+              <span class="text-xs text-accent font-medium" data-i18n="cases.c1_term">Результат: 1 месяц</span>
+            </div>
+            <p class="text-xs sm:text-sm text-nude-800/80 leading-relaxed" data-i18n="cases.c1_d">
+              Устранение дерматохалязиса (нависания века), трансконъюнктивальное перераспределение жировых грыж нижнего века. Взгляд открытый и отдохнувший без эффекта натяжения.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-nude-50 p-6 rounded-3xl border border-nude-200">
+          <div class="slider-container rounded-2xl aspect-[16/10] shadow-md mb-6" id="slider2">
+            <img 
+              src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=80" 
+              alt="После липоскульптурирования" 
+              class="w-full h-full object-cover object-center"
+            />
+            <span class="absolute bottom-4 right-4 bg-nude-900/80 text-white text-[11px] font-semibold tracking-wider uppercase px-3 py-1 rounded-full backdrop-blur-md" data-i18n="cases.after">После</span>
+
+            <div class="slider-img-top" id="slider2-top">
+              <img 
+                src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=80" 
+                alt="До липоскульптурирования" 
+                class="absolute top-0 left-0 max-w-none h-full object-cover object-center filter grayscale contrast-125"
+                style="width: 100%;"
+              />
+              <span class="absolute bottom-4 left-4 bg-accent/90 text-white text-[11px] font-semibold tracking-wider uppercase px-3 py-1 rounded-full backdrop-blur-md" data-i18n="cases.before">До</span>
+            </div>
+
+            <div class="slider-handle" id="slider2-handle">
+              <div class="slider-button">
+                <i data-lucide="move-horizontal" class="w-4 h-4 text-accent"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <h4 class="font-serif text-xl font-bold text-nude-900" data-i18n="cases.c2_t">Липоскульптурирование талии и боков</h4>
+              <span class="text-xs text-accent font-medium" data-i18n="cases.c2_term">Результат: 3 месяца</span>
+            </div>
+            <p class="text-xs sm:text-sm text-nude-800/80 leading-relaxed" data-i18n="cases.c2_d">
+              Аспирация 1400 мл подкожно-жировой клетчатки, моделирование выразительной линии талии и спортивного рельефа без бугристости и неровностей.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-24 bg-nude-50 border-t border-nude-200">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="bg-nude-900 text-white rounded-3xl p-8 sm:p-14 shadow-2xl relative overflow-hidden">
+        <div class="absolute -top-20 -right-20 w-80 h-80 bg-accent/20 rounded-full blur-3xl"></div>
+
+        <div class="relative z-10 text-center max-w-xl mx-auto">
+          <span class="text-xs uppercase tracking-widest text-accent font-semibold" data-i18n="contact.pre">Прием и консультации</span>
+          <h2 class="font-serif text-3xl sm:text-4xl font-normal mt-2 mb-4" data-i18n="contact.heading">Записаться на консультацию</h2>
+          <p class="text-nude-200 text-sm mb-8 leading-relaxed" data-i18n="contact.desc">
+            Очный прием в клинике или предварительная онлайн-консультация по фотографиям для иногородних пациентов.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="https://wa.me/" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-accent hover:bg-accent-hover text-white rounded-full font-medium text-xs uppercase tracking-wider transition shadow-lg">
+              <i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp
+            </a>
+            <a href="https://t.me/" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-full font-medium text-xs uppercase tracking-wider transition">
+              <i data-lucide="send" class="w-4 h-4"></i> Telegram
+            </a>
+          </div>
+
+          <div class="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-around text-xs text-nude-200/70 gap-4">
+            <span class="flex items-center justify-center gap-2">
+              <i data-lucide="map-pin" class="w-4 h-4 text-accent"></i> Москва / Очные и онлайн-приемы
+            </span>
+            <span class="flex items-center justify-center gap-2">
+              <i data-lucide="clock" class="w-4 h-4 text-accent"></i> Пн–Сб: по предварительной записи
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-8 bg-white border-t border-nude-200 text-center text-xs text-nude-800/70">
+    <p>© <span id="year"></span> Dr. Madina Suleymanova. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const translations = {
+      ru: {
+        "nav.badge": "Пластический хирург",
+        "nav.about": "О хирурге",
+        "nav.theory": "Анатомия & Теория",
+        "nav.blepharo": "Блефаропластика",
+        "nav.lipo": "Липосакция",
+        "nav.cases": "Клинические примеры",
+        "nav.contact": "Контакты",
+        "nav.consult": "Консультация",
+        "hero.badge": "Высокоточная хирургия лица и тела",
+        "hero.title_surname": "Сулейманова",
+        "hero.title_name": "Мадина Саидовна",
+        "hero.desc": "Пластический хирург. Сочетание передового операционного оснащения, малотравматичных методик и анатомической прецизионности для предсказуемого и естественного результата.",
+        "hero.stat1": "Лет практики",
+        "hero.stat2": "Операций",
+        "hero.stat3": "Легкое восстановление",
+        "hero.cta": "Записаться на прием",
+        "hero.more": "Схемы и методология",
+        "hero.box_t": "Хирургический блок",
+        "hero.box_sub": "Европейские стандарты стерильности",
+        "hero.box_i1": "Бестеневые светодиодные хирургические светильники с регулировкой цветовой температуры.",
+        "hero.box_i2": "Ультразвуковые и радиоволновые коагуляторы для бескровного рассечения тканей.",
+        "hero.box_i3": "Высокоточные тонкие канюли и микрохирургический шовный материал 6-0 / 7-0.",
+        "about.pre": "О хирурге",
+        "about.heading": "Индивидуальная анатомическая гармония и бережная хирургия",
+        "about.p1": "Мадина Саидовна специализируется на эстетической и реконструктивной хирургии с фокусом на омоложение взгляда (блефаропластика всех уровней сложности) и скульптурирование контуров тела (высокоточная липосакция).",
+        "about.p2": "В основе каждой операции — философия «невидимых рубцов» и быстрого восстановления благодаря работе в микрохирургической технике и использованию передового операционного оборудования.",
+        "about.stat1": "Лет практики",
+        "about.stat2": "Успешных операций",
+        "about.stat3": "Быстрая реабилитация",
+        "theory.pre": "Теория & Методология",
+        "theory.heading": "Анатомические принципы вмешательства",
+        "theory.desc": "Прозрачность и понимание этапов операции — залог спокойствия пациента. Ниже представлены схемы разрезов, доступов и перераспределения тканей.",
+        "theory.b_title": "Анатомия периорбитальной зоны",
+        "theory.b_tag": "Микрохирургия",
+        "theory.b_p1": "<strong>Верхнее веко:</strong> иссечение строго рассчитанного избытка кожи до 0.5 мм с прецизионной фиксацией края.",
+        "theory.b_p2": "<strong>Нижнее веко:</strong> трансконъюнктивальный доступ без рассечения кожи и круговой мышцы глаза.",
+        "theory.l_title": "HD-моделирование контуров тела",
+        "theory.l_tag": "Векторная аспирация",
+        "theory.l_p1": "<strong>Селективность:</strong> равномерное удаление глубоких жировых отложений с сохранением поверхностного каркаса.",
+        "theory.l_p2": "<strong>HD-акцент:</strong> прорисовка индивидуальных линий талии, прямых мышц пресса и четкого угла челюсти.",
+        "bleph.pre": "Направление 01",
+        "bleph.heading": "Блефаропластика (Пластика век)",
+        "bleph.sub": "Операция по омоложению периорбитальной зоны: открытый, свежий взгляд без изменения природного разреза глаз.",
+        "bleph.c1_t": "Верхняя блефаропластика",
+        "bleph.c1_d": "Удаление нависающей кожной складки и жировых пакетов. Тончайший шов прячется в естественную складку века и становится незаметен уже через 2–3 недели.",
+        "bleph.c1_time": "Реабилитация: 7–10 дней",
+        "bleph.c2_t": "Трансконъюнктивальная",
+        "bleph.c2_d": "Бесшовная методика для избавления от «мешков» под глазами. Разрез выполняется с внутренней стороны века, не оставляя внешних следов.",
+        "bleph.c2_time": "Без внешних шрамов",
+        "bleph.c3_t": "Круговая коррекция",
+        "bleph.c3_d": "Комплексное устранение возрастных изменений верхних и нижних век, подтяжка круговой мышцы глаза и гармоничное перераспределение объемов.",
+        "bleph.c3_time": "Комплексный результат",
+        "lipo.pre": "Направление 02",
+        "lipo.heading": "Высокоточная липосакция и контурирование",
+        "lipo.sub": "Скульптурирование силуэта, избавление от локальных жировых ловушек и прорисовка четких анатомических линий тела.",
+        "lipo.c1_t": "Овал лица и подбородок",
+        "lipo.c1_d": "Создание четкого шейно-подбородочного угла («профиль Нефертити») через микропроколы до 2 мм без видимых следов.",
+        "lipo.c1_tag": "Операция одного дня",
+        "lipo.c2_t": "Живот, талия и бока",
+        "lipo.c2_d": "HD-липоскульптурирование: деликатное удаление жировых отложений с акцентом на создание рельефного силуэта и плоского живота.",
+        "lipo.c2_tag": "Атлетичный силуэт",
+        "lipo.c3_t": "Бедра и область колен",
+        "lipo.c3_d": "Устранение зоны галифе и валиков над коленями, гармонизация пропорций ног с сохранением плавных линий.",
+        "lipo.c3_tag": "Плавные пропорции",
+        "cases.pre": "Результаты операций",
+        "cases.heading": "Клинические примеры",
+        "cases.desc": "Передвигайте ползунок для оценки изменений до и после хирургического вмешательства.",
+        "cases.before": "До",
+        "cases.after": "После",
+        "cases.c1_t": "Круговая блефаропластика",
+        "cases.c1_term": "Результат: 1 месяц",
+        "cases.c1_d": "Устранение дерматохалязиса (нависания века), трансконъюнктивальное перераспределение жировых грыж нижнего века. Взгляд открытый и отдохнувший без эффекта натяжения.",
+        "cases.c2_t": "Липоскульптурирование талии и боков",
+        "cases.c2_term": "Результат: 3 месяца",
+        "cases.c2_d": "Аспирация 1400 мл подкожно-жировой клетчатки, моделирование выразительной линии талии и спортивного рельефа без бугристости и неровностей.",
+        "contact.pre": "Прием и консультации",
+        "contact.heading": "Записаться на консультацию",
+        "contact.desc": "Очный прием в клинике или предварительная онлайн-консультация по фотографиям для иногородних пациентов."
+      },
+      en: {
+        "nav.badge": "Plastic Surgeon",
+        "nav.about": "About Surgeon",
+        "nav.theory": "Anatomy & Theory",
+        "nav.blepharo": "Blepharoplasty",
+        "nav.lipo": "Liposuction",
+        "nav.cases": "Clinical Cases",
+        "nav.contact": "Contact",
+        "nav.consult": "Consultation",
+        "hero.badge": "High-Precision Facial & Body Surgery",
+        "hero.title_surname": "Dr. Madina",
+        "hero.title_name": "Suleymanova",
+        "hero.desc": "Plastic surgeon combining modern operating theatre technology, minimally invasive procedures, and anatomical precision for predictable and natural outcomes.",
+        "hero.stat1": "Years Experience",
+        "hero.stat2": "Operations",
+        "hero.stat3": "Fast-Track Recovery",
+        "hero.cta": "Book Consultation",
+        "hero.more": "Theory & Diagrams",
+        "hero.box_t": "Surgical Suite",
+        "hero.box_sub": "Class-A Sterility Standards",
+        "hero.box_i1": "Shadowless LED surgical light heads with adjustable color temperature.",
+        "hero.box_i2": "Radiofrequency and ultrasonic coagulation for bloodless dissection.",
+        "hero.box_i3": "Sub-millimeter atraumatic cannulas and microsurgical sutures (6-0 / 7-0).",
+        "about.pre": "About Surgeon",
+        "about.heading": "Anatomical Harmony & Gentle Surgical Approach",
+        "about.p1": "Dr. Madina Suleymanova specializes in aesthetic surgery with deep focus on periorbital rejuvenation (blepharoplasty) and high-definition body contouring.",
+        "about.p2": "Every procedure follows the philosophy of 'hidden incisions' and accelerated healing achieved through micro-technique and advanced surgical instrumentation.",
+        "about.stat1": "Years Experience",
+        "about.stat2": "Successful Cases",
+        "about.stat3": "Fast Recovery",
+        "theory.pre": "Theory & Methodology",
+        "theory.heading": "Anatomical Principles of Intervention",
+        "theory.desc": "Understanding surgical steps gives complete peace of mind. Below are the anatomical incision paths and structural reshaping vectors.",
+        "theory.b_title": "Periorbital Anatomy",
+        "theory.b_tag": "Microsurgery",
+        "theory.b_p1": "<strong>Upper eyelid:</strong> excision of redundant skin calibrated to 0.5 mm with anatomical crease fixation.",
+        "theory.b_p2": "<strong>Lower eyelid:</strong> transconjunctival access without cutting external skin or orbicularis muscle.",
+        "theory.l_title": "High-Definition Body Sculpting",
+        "theory.l_tag": "Vector Aspiration",
+        "theory.l_p1": "<strong>Selectivity:</strong> deep layer fat aspiration preserving the superficial vascular support network.",
+        "theory.l_p2": "<strong>HD Definition:</strong> accentuating individual waist curves, rectus muscle outlines, and jawlines.",
+        "bleph.pre": "Specialization 01",
+        "bleph.heading": "Blepharoplasty (Eyelid Surgery)",
+        "bleph.sub": "Rejuvenation of the periorbital area: an open, radiant expression preserving your natural eye geometry.",
+        "bleph.c1_t": "Upper Blepharoplasty",
+        "bleph.c1_d": "Elimination of skin folds and fat pockets. The ultra-thin line is hidden inside the natural supratarsal fold.",
+        "bleph.c1_time": "Recovery: 7–10 days",
+        "bleph.c2_t": "Transconjunctival",
+        "bleph.c2_d": "Scarless approach for lower eye bags. Internal eyelid incision leaves zero external marks.",
+        "bleph.c2_time": "No visible scars",
+        "bleph.c3_t": "Full Periorbital Correction",
+        "bleph.c3_d": "Comprehensive restoration of upper and lower eyelids, muscle support, and smooth contouring.",
+        "bleph.c3_time": "Comprehensive outcome",
+        "lipo.pre": "Specialization 02",
+        "lipo.heading": "High-Definition Liposuction",
+        "lipo.sub": "Sculpting stubborn zones and refining anatomical contours into clean athletic lines.",
+        "lipo.c1_t": "Submental & Jawline",
+        "lipo.c1_d": "Sharpening the cervicomental angle via 2mm micro-punctures with fast tissue remodeling.",
+        "lipo.c1_tag": "Outpatient procedure",
+        "lipo.c2_t": "Abdomen, Waist & Flanks",
+        "lipo.c2_d": "HD contouring targeting localized fat to reveal natural muscle contours and a flat stomach.",
+        "lipo.c2_tag": "Athletic silhouette",
+        "lipo.c3_t": "Thighs & Knees",
+        "lipo.c3_d": "Eliminating saddlebags and knee fat pockets, creating proportional and smooth leg silhouettes.",
+        "lipo.c3_tag": "Balanced proportions",
+        "cases.pre": "Clinical Outcomes",
+        "cases.heading": "Case Studies",
+        "cases.desc": "Slide the handle to compare before and after results.",
+        "cases.before": "Before",
+        "cases.after": "After",
+        "cases.c1_t": "Complete Blepharoplasty",
+        "cases.c1_term": "Result: 1 month",
+        "cases.c1_d": "Correction of eyelid hooding with transconjunctival fat redistribution. Fresh look without artificial tension.",
+        "cases.c2_t": "HD Waist & Flank Liposuction",
+        "cases.c2_term": "Result: 3 months",
+        "cases.c2_d": "Aspiration of 1400 ml subcutaneous tissue, sculpting an hourglass waistline and athletic midsection.",
+        "contact.pre": "Appointments & Inquiries",
+        "contact.heading": "Book a Consultation",
+        "contact.desc": "In-person visits at the clinic or preliminary online assessment for out-of-town patients."
+      }
+    };
+
+    const svgTexts = {
+      ru: {
+        "svg-brow": "Бровная дуга",
+        "svg-upper-cut": "Шов в складке века",
+        "svg-fat-pads": "Жировые пакеты (грыжи)",
+        "svg-trans-cut": "Внутренний доступ (без рубца)",
+        "svg-skin": "Кожный покров (эпидермис и дерма)",
+        "svg-muscle": "Мышечный каркас (сохраняемый рельеф)",
+        "svg-cannula": "Атравматичная канюля (микропрокол 2 мм)"
+      },
+      en: {
+        "svg-brow": "Eyebrow Arch",
+        "svg-upper-cut": "Natural Crease Incision",
+        "svg-fat-pads": "Orbital Fat Pads",
+        "svg-trans-cut": "Internal Access (Scarless)",
+        "svg-skin": "Skin Layers (Epidermis & Dermis)",
+        "svg-muscle": "Muscular Layer (Preserved Frame)",
+        "svg-cannula": "Atraumatic Cannula (2mm micro-port)"
+      }
+    };
+
+    function changeLang(lang) {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang][key]) {
+          el.innerHTML = translations[lang][key];
+        }
+      });
+
+      for (const [id, text] of Object.entries(svgTexts[lang])) {
+        const el = document.getElementById(id);
+        if (el) el.textContent = text;
+      }
+
+      const btnRu = document.getElementById('btn-ru');
+      const btnEn = document.getElementById('btn-en');
+      if (lang === 'ru') {
+        btnRu.className = 'px-2.5 py-1 rounded-full font-semibold bg-accent text-white transition';
+        btnEn.className = 'px-2.5 py-1 rounded-full text-nude-800 transition';
+      } else {
+        btnEn.className = 'px-2.5 py-1 rounded-full font-semibold bg-accent text-white transition';
+        btnRu.className = 'px-2.5 py-1 rounded-full text-nude-800 transition';
+      }
+      lucide.createIcons();
+    }
+
+    function initBeforeAfterSlider(containerId, topImgId, handleId) {
+      const container = document.getElementById(containerId);
+      const topImg = document.getElementById(topImgId);
+      const handle = document.getElementById(handleId);
+      const innerImg = topImg.querySelector('img');
+
+      function updateSliderWidth() {
+        if (container && innerImg) {
+          innerImg.style.width = container.offsetWidth + 'px';
+        }
+      }
+
+      window.addEventListener('resize', updateSliderWidth);
+      updateSliderWidth();
+
+      let isDragging = false;
+
+      function setPosition(x) {
+        const rect = container.getBoundingClientRect();
+        let posX = x - rect.left;
+        if (posX < 0) posX = 0;
+        if (posX > rect.width) posX = rect.width;
+
+        const percentage = (posX / rect.width) * 100;
+        topImg.style.width = percentage + '%';
+        handle.style.left = percentage + '%';
+      }
+
+      container.addEventListener('mousedown', (e) => { isDragging = true; setPosition(e.clientX); });
+      window.addEventListener('mouseup', () => { isDragging = false; });
+      window.addEventListener('mousemove', (e) => { if (isDragging) setPosition(e.clientX); });
+
+      container.addEventListener('touchstart', (e) => { isDragging = true; setPosition(e.touches[0].clientX); });
+      window.addEventListener('touchend', () => { isDragging = false; });
+      window.addEventListener('touchmove', (e) => { if (isDragging) setPosition(e.touches[0].clientX); });
+    }
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+    lucide.createIcons();
+
+    window.addEventListener('load', () => {
+      initBeforeAfterSlider('slider1', 'slider1-top', 'slider1-handle');
+      initBeforeAfterSlider('slider2', 'slider2-top', 'slider2-handle');
+    });
+  </script>
+</body>
+</html>
